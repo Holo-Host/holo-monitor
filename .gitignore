@@ -1,0 +1,16 @@
+# files with Cloudflare keys
+keys.json
+keys.mjs
+keys*
+
+# node modules
+node_modules
+
+# mac files
+.DS_Store
+
+# nix generated files
+conductor-config.toml
+conductor.log
+conductor.pid
+.holochain
