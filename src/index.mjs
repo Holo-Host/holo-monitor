@@ -17,6 +17,9 @@ const startTestConductor = async () => {
 startTestConductor().then(() =>{
 
 	call(INSTANCE_ID, "whoami","get_user",{})
+	// TODO: Write logic
+	// Call HHA DNA to get kv data
+	// Used that data to update the KV store
 
 }).catch(
 	() => { throw new Error("Script not successful")
