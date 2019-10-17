@@ -9,13 +9,15 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "watch -n 60 node --experimental-modules src/index.mjs"
+    "test:setup": "node scripts/test_setup/index.js",
+    "once": "node src/index.js",
+    "start": "watch -n 60 node src/index.mjs"
   },
   "keywords": [],
   "author": "Holo Dev Team<@holo.host>",
   "license": "ISC",
   "dependencies": {
-    "@holochain/hc-web-client": "^0.4.1",
+    "@holochain/hc-web-client": "^0.5.0",
     "axios": "^0.18.0",
     "rpc-websockets": "^4.6.1"
   },

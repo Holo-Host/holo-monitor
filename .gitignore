@@ -14,3 +14,4 @@ conductor-config.toml
 conductor.log
 conductor.pid
 .holochain
+scripts
