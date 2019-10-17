@@ -1,0 +1,26 @@
+{
+  "name": "holo-monitor",
+  "version": "0.1.0",
+  "description": "script to  reads HHA DHT data and updates a cloudflare kv store",
+  "main": "src/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Holo-Host/holo-monitor"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "watch -n 60 node --experimental-modules src/index.mjs"
+  },
+  "keywords": [],
+  "author": "Holo Dev Team<@holo.host>",
+  "license": "ISC",
+  "dependencies": {
+    "@holochain/hc-web-client": "^0.4.1",
+    "axios": "^0.18.0",
+    "rpc-websockets": "^4.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "nodemon": "^1.18.9"
+  }
+}
