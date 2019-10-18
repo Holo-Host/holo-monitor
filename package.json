@@ -10,6 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:setup": "node scripts/test_setup/index.js",
+    "test:enable-happs": "node scripts/enable_happs/index.js",
+    "test:disable-happs": "node scripts/disable_happs/index.js",
     "once": "node src/index.js",
     "start": "watch -n 60 node src/index.mjs"
   },
