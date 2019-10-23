@@ -15,5 +15,17 @@ The Holo Monitor keep track of when a hosts enable or disable an app for hosting
 - For running on a server:
 > `npm start`
 
+
+### Lets run tests:
+
+- `npm install`
+- `nix-shell` or `holochain -c conductor-config.toml`
+- `npm run test:setup`
+- `npm run test:enable-happs`
+- `npm run once`
+- curl to get GET LIST
+
+**NOTE:** If you are unclear about how to get the keys to work, just look in the code.
+
 ## Reference Doc
 - [DNA APIs](https://hackmd.io/_zUswSixRRK0NpnvoK1dLA)

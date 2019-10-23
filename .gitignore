@@ -11,6 +11,7 @@ node_modules
 
 # nix generated files
 conductor-config.toml
+hc-conductor-config.toml
 conductor.log
 conductor.pid
 .holochain
