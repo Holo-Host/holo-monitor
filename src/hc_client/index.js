@@ -8,13 +8,20 @@ const call = async (instance, zome, zome_fn, params ) => {
       ({callZome, close}) => {
         return callZome(instance, zome, zome_fn)(params).then(r => {
           const result = JSON.parse(r)
-          if (result.Err) throw new Error('Holochain Error: ',result.Err)
+          if (result.Err) {
+            console.log("Holochain Error:",result.Err);
+            close()
+            throw new Error('Holochain Error: ',result.Err)
+          }
           else {
             close()
             return result.Ok
           }
         }
-      ).catch(e => {throw new Error('Zome Call Error: ',e)})
+      ).catch(e => {
+        console.log("Zome Call Error:".result.Err);
+        throw new Error('Zome Call Error: ',e)
+      })
   })
 }
 

@@ -23,6 +23,8 @@ The Holo Monitor keep track of when a hosts enable or disable an app for hosting
 - `npm run test:setup`
 - `npm run test:enable-happs`
 - `npm run once`
+- `npm run test:disable-happs`
+- `npm run once`
 - curl to get GET LIST
 
 **NOTE:** If you are unclear about how to get the keys to work, just look in the code.

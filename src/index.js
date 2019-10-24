@@ -23,9 +23,10 @@ const { do_cloudflare_update, do_cloudflare_get, do_cloudflare_get_list } = requ
   //   }
   // ]
 
-pingConductor().then( async () =>{
+  pingConductor().then( async () =>{
 
 	// Registering as Host
+  console.log("Registering as Host...");
   await call(HHA_INSTANCE_ID, "host", "register_as_host", {host_doc: {kyc_proof: ""}})
 
   // Getting data from the HHA to
