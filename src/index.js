@@ -69,7 +69,11 @@ pingConductor().then( async () =>{
   console.log("Data to be updated: ",new_list);
 
   // Load the KV Store with the new data
-  await load_kv_store(new_list)
+  load_kv_store(new_list).then(async()=> {
+    // When the load to the kv store is sucessfull the DNA expects you to update it
+    await call(HHA_INSTANCE_ID, "host", "kv_updates_host_completed", {kv_bundle: new_enabled_apps.concat(new_disable_apps)})
+    console.log("HHA DNA Notified that the kv was updated.");
+  })
 
 }).catch((e) => {throw new Error("Script not successful",e)})
 
