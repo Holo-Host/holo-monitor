@@ -5,27 +5,27 @@ const { call, pingConductor } = require("./hc_client")
 const { do_cloudflare_update, do_cloudflare_get, do_cloudflare_get_list } = require("./kv_updater")
 
 
-  // Examples Data
-  // const new_enabled_apps = [
-  //   {
-  //     app: 'APP-DNA-HASH-1',
-  //     host: ["Test_HOST_HASH_1"]
-  //   },
-  //   {
-  //     app: 'APP-DNA-HASH-2',
-  //     host: ["Test_HOST_HASH_2"]
-  //   }
-  // ]
-  // const new_disable_apps = [
-  //  {
-  //     app: 'APP-DNA-HASH-2',
-  //     host:["Test_HOST_HASH_4"]
-  //   }
-  // ]
+// Examples Data
+// const new_enabled_apps = [
+//   {
+//     app: 'APP-DNA-HASH-1',
+//     host: ["Test_HOST_HASH_1"]
+//   },
+//   {
+//     app: 'APP-DNA-HASH-2',
+//     host: ["Test_HOST_HASH_2"]
+//   }
+// ]
+// const new_disable_apps = [
+//  {
+//     app: 'APP-DNA-HASH-2',
+//     host:["Test_HOST_HASH_4"]
+//   }
+// ]
 
-  pingConductor().then( async () =>{
+pingConductor().then( async () =>{
 
-	// Registering as Host
+  // Registering as Host
   console.log("Registering as Host...");
   await call(HHA_INSTANCE_ID, "host", "register_as_host", {host_doc: {kyc_proof: ""}})
 
@@ -47,11 +47,10 @@ const { do_cloudflare_update, do_cloudflare_get, do_cloudflare_get_list } = requ
       return new_app.app == kv.app})
     if(result==undefined) return kv
     else return {
-        app: kv.app,
-        host:kv.host.concat(result.host).unique()
-      }
+      app: kv.app,
+      host:kv.host.concat(result.host).unique()
     }
-  )
+  })
   // console.log("Filtered with the enabled apps",new_list);
 
   // Filtering through the disabled apps
@@ -77,7 +76,7 @@ const { do_cloudflare_update, do_cloudflare_get, do_cloudflare_get_list } = requ
 // Updates the KV Store
 const load_kv_store = async (app_list) => {
   for(j=0; j < app_list.length; j++){
-      await do_cloudflare_update(app_list[j].app, JSON.stringify(app_list[j].host))
+    await do_cloudflare_update(app_list[j].app, JSON.stringify(app_list[j].host))
   }
 }
 
@@ -97,12 +96,12 @@ const get_old_data = async () => {
 
 // Helper Function
 Array.prototype.unique = function() {
-    var a = this.concat();
-    for(var i=0; i<a.length; ++i) {
-        for(var j=i+1; j<a.length; ++j) {
-            if(a[i] === a[j])
-                a.splice(j--, 1);
-        }
+  var a = this.concat();
+  for(var i=0; i<a.length; ++i) {
+    for(var j=i+1; j<a.length; ++j) {
+      if(a[i] === a[j])
+        a.splice(j--, 1);
     }
-    return a;
+  }
+  return a;
 };
