@@ -1,18 +1,11 @@
+'use strict';
 const axios = require('axios')
 const fs = require('fs')
 
-// // read file for keys
-// let contents = fs.readFileSync("./keys.json", "utf8")
-// //console.log(contents)
-// const KEYS = JSON.parse(contents)
-const KEYS = {
-  "account":"18ff2b4e6205b938652998cfca0d8cff",
-  "auth_email":"holohost.cloudflare.admin@holo.host",
-  "auth_key":"54fa3272b79f6aaab6c8d822ed3763745b6fb",
-  "namespace":"f8f2d4bcf1414bf2ae048f027104036c"
-}
+// read file for keys
+let contents = fs.readFileSync("keys.json")
+const KEYS = JSON.parse(contents)
 
-// console.log(KEYS)
 let account = KEYS.account
 let auth_email = KEYS.auth_email
 let auth_key = KEYS.auth_key
