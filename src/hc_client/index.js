@@ -17,12 +17,12 @@ const call = async (instance, zome, zome_fn, params ) => {
             close()
             return result.Ok
           }
-        }
-      ).catch(e => {
-        console.log("Zome Call Error:".result.Err);
-        throw new Error('Zome Call Error: ',e)
-      })
-  })
+        }).catch(e => {
+          console.log("Zome Call Error:".result.Err);
+          throw new Error('Zome Call Error: ',e)
+        })
+      }
+    )
 }
 
 function pingConductor () {
@@ -30,8 +30,9 @@ function pingConductor () {
     const callToHC = axios.post("http://localhost:"+CONDUCTOR_HTTP_PORT+"/admin/agent/list", {})
     console.log("Conductor is running...");
     resolve(callToHC)
-	})
-    .catch((e) => { throw new Error(` \n No Holochain Conductor Found.\n Note: Make sure your HC conductor is running! \n`)})
+  }).catch((e) => {
+    throw new Error(` \n No Holochain Conductor Found.\n Note: Make sure your HC conductor is running! \n`)
+  })
 }
 
 module.exports = { call, pingConductor }
