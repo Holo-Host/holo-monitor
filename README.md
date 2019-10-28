@@ -11,7 +11,6 @@ The Holo Monitor keep track of when a hosts enable or disable an app for hosting
 - For running on a server:
 > `npm start`
 
-
 ### Lets run tests:
 
 We need to install the node modules
