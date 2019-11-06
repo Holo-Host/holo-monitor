@@ -15,6 +15,10 @@ const get_old_data = async () => {
   console.log(kv_list)
 }
 
+<<<<<<< HEAD
 get_old_data()
+=======
+// get_old_data()
+>>>>>>> b0f372f0507a48c14aeab692d96a36b14472c822
 
 module.exports = { get_old_data }
