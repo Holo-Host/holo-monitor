@@ -20,7 +20,6 @@ let
   };
 
   dnas = with dnaPackages; [
-    happ-store
     holo-hosting-app
   ];
 in
