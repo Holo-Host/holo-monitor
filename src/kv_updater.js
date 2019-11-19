@@ -3,95 +3,93 @@ const axios = require('axios')
 const fs = require('fs')
 
 // read file for keys
-let contents = fs.readFileSync('keys.json')
+const contents = fs.readFileSync('keys.json')
 const KEYS = JSON.parse(contents)
 
-let account = KEYS.account
-let auth_email = KEYS.auth_email
-let auth_key = KEYS.auth_key
-let namespace = KEYS.namespace
+const account = KEYS.account
+const authEmail = KEYS.authEmail
+const authKey = KEYS.authKey
+const namespace = KEYS.namespace
 
 // vars for Cloudflare API urls
-let base_url = 'https://api.cloudflare.com'
-let account_path = 'client/v4/accounts'
-let namespace_path = 'storage/kv/namespaces'
-
+const baseURL = 'https://api.cloudflare.com'
+const accountPath = 'client/v4/accounts'
+const namespacePath = 'storage/kv/namespaces'
 
 // Cloudflare API request vars
 let url = ''
 let method = ''
 let headers = {}
-let content_type = 'application/json'
-let axios_request = {}
+const contentType = 'application/json'
+let axiosRequest = {}
 
 // FOR NOW DNS IS THE KEY
 // DNA IS THE VALUE
-const doCloudflareUpdate = async (kv_key, kv_value) => {
-  console.log(kv_key + ':' + kv_value)
+const doCloudflareUpdate = async (kvKey, kvValue) => {
+  console.log(kvKey + ':' + kvValue)
   // Setting axios url, method, and headers for request
   // javascript using backticks ` and string literals ${}
-  url = `${base_url}/${account_path}/${account}/${namespace_path}/${namespace}/values/${kv_key}`
+  url = `${baseURL}/${accountPath}/${account}/${namespacePath}/${namespace}/values/${kvKey}`
   method = 'PUT'
   headers = {
-    'X-Auth-Email': auth_email,
-    'X-Auth-Key': auth_key,
-    'Content-Type': content_type
+    'X-Auth-Email': authEmail,
+    'X-Auth-Key': authKey,
+    'Content-Type': contentType
   }
-  axios_request = {
+  axiosRequest = {
     url: url,
     method: method,
     headers: headers,
-    data: kv_value
+    data: kvValue
   }
-  // console.log(axios_request)
-  await do_axios_request()
+  // console.log(axiosRequest)
+  await doAxiosRequest()
 }
 
-const doCloudflareGet = async (kv_key) => {
-  console.log(`Getting data from KV Storef for ${kv_key}...`)
-  url = `${base_url}/${account_path}/${account}/${namespace_path}/${namespace}/values/${kv_key}`
+const doCloudflareGet = async (kvKey) => {
+  console.log(`Getting data from KV Storef for ${kvKey}...`)
+  url = `${baseURL}/${accountPath}/${account}/${namespacePath}/${namespace}/values/${kvKey}`
   method = 'GET'
   headers = {
-    'X-Auth-Email': auth_email,
-    'X-Auth-Key': auth_key,
-    'Content-Type': content_type
+    'X-Auth-Email': authEmail,
+    'X-Auth-Key': authKey,
+    'Content-Type': contentType
   }
-  axios_request = {
+  axiosRequest = {
     url: url,
     method: method,
-    headers: headers,
+    headers: headers
   }
-  // console.log(axios_request)
-  return await do_axios_request()
+  // console.log(axiosRequest)
+  return await doAxiosRequest()
 }
 
 const doCloudflareGetList = async () => {
   console.log('Getting list of Key from KV Store...')
-  url = `${base_url}/${account_path}/${account}/${namespace_path}/${namespace}/keys`
+  url = `${baseURL}/${accountPath}/${account}/${namespacePath}/${namespace}/keys`
   method = 'GET'
   headers = {
-    'X-Auth-Email': auth_email,
-    'X-Auth-Key': auth_key,
-    'Content-Type': content_type
+    'X-Auth-Email': authEmail,
+    'X-Auth-Key': authKey,
+    'Content-Type': contentType
   }
-  axios_request = {
+  axiosRequest = {
     url: url,
     method: method,
-    headers: headers,
+    headers: headers
   }
-  // console.log(axios_request)
-  return await do_axios_request()
+  // console.log(axiosRequest)
+  return await doAxiosRequest()
 }
 
 // function for making requests
-const do_axios_request = async () => {
+const doAxiosRequest = async () => {
   try {
-    const response = await axios(axios_request)
+    const response = await axios(axiosRequest)
     const data = response.data
     // console.log(data)
     return data
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error)
     return []
   }
