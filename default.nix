@@ -25,8 +25,8 @@ let
 in
 
 {
-  holo-envoy = stdenv.mkDerivation rec {
-    name = "holo-envoy";
+  holo-monitor = stdenv.mkDerivation rec {
+    name = "holo-monitor";
     src = gitignoreSource ./.;
 
     nativeBuildInputs = [
