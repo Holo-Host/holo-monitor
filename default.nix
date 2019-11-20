@@ -41,24 +41,10 @@ in
       patchShebangs node_modules
     '';
 
-    buildPhase = ''
-      npm run build
-    '';
-
     installPhase = ''
       mkdir $out
       mv * $out
     '';
-
-    fixupPhase = ''
-      patchShebangs $out
-    '';
-
-    checkPhase = ''
-      npm run test:unit
-    '';
-
-    doCheck = true;
   };
 
   holo-monitor-conductor-config = writeTOML {
