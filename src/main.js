@@ -1,6 +1,4 @@
-const axios = require('axios')
-const { connect } = require('@holochain/hc-web-client')
-const { DNA_PORT, CONDUCTOR_HTTP_PORT, HHA_INSTANCE_ID } = require('./consts')
+const { HHA_INSTANCE_ID } = require('./consts')
 const { call, pingConductor } = require('./hc_client')
 const { doCloudflareUpdate, doCloudflareGet, doCloudflareGetList } = require('./kv_updater')
 
@@ -104,6 +102,9 @@ const getOldData = async () => {
 }
 
 // Helper Function
+// rewrite this if desired to avoid linter complaint
+// for now disable linter complaint
+// eslint-disable-next-line
 Array.prototype.unique = function () {
   var a = this.concat()
   for (var i = 0; i < a.length; ++i) {

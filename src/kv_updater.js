@@ -61,7 +61,7 @@ const doCloudflareGet = async (kvKey) => {
     headers: headers
   }
   // console.log(axiosRequest)
-  return await doAxiosRequest()
+  return doAxiosRequest()
 }
 
 const doCloudflareGetList = async () => {
@@ -79,7 +79,7 @@ const doCloudflareGetList = async () => {
     headers: headers
   }
   // console.log(axiosRequest)
-  return await doAxiosRequest()
+  return doAxiosRequest()
 }
 
 // function for making requests
