@@ -25,8 +25,8 @@ let
 in
 
 {
-  holo-envoy = stdenv.mkDerivation rec {
-    name = "holo-envoy";
+  holo-monitor = stdenv.mkDerivation rec {
+    name = "holo-monitor";
     src = gitignoreSource ./.;
 
     nativeBuildInputs = [
@@ -41,24 +41,10 @@ in
       patchShebangs node_modules
     '';
 
-    buildPhase = ''
-      npm run build
-    '';
-
     installPhase = ''
       mkdir $out
       mv * $out
     '';
-
-    fixupPhase = ''
-      patchShebangs $out
-    '';
-
-    checkPhase = ''
-      npm run test:unit
-    '';
-
-    doCheck = true;
   };
 
   holo-monitor-conductor-config = writeTOML {
