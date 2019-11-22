@@ -16,3 +16,4 @@ conductor.log
 conductor.pid
 .holochain
 cloudflare-kv-scripts
+.env

@@ -1,15 +1,11 @@
 'use strict'
 const axios = require('axios')
-const fs = require('fs')
+require('dotenv').config()
 
-// read file for keys
-const contents = fs.readFileSync('keys.json')
-const KEYS = JSON.parse(contents)
-
-const account = KEYS.account
-const authEmail = KEYS.authEmail
-const authKey = KEYS.authKey
-const namespace = KEYS.namespace
+const account = process.env.HM_ACCOUNT
+const authEmail = process.env.HM_AUTH_EMAIL
+const authKey = process.env.HM_AUTH_KEY
+const namespace = process.env.HM_NAMESPACE
 
 // vars for Cloudflare API urls
 const baseURL = 'https://api.cloudflare.com'

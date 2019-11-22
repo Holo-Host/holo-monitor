@@ -1,4 +1,5 @@
 # Holo Monitor
+> Note: You would need some keys to deploy or test this service
 
 The Holo Monitor keep track of when a hosts enable or disable an app for hosting my hosting device is automatically registered/deregistered with this Holo centralized services
 
